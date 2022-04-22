@@ -34,6 +34,9 @@ const balance = document.querySelector(".balnce");
 const loginBtn = document.querySelector(".login-btn");
 const loginInput = document.querySelector(".login-input");
 const loginPass = document.querySelector(".login-password");
+const btnMove = document.querySelector(".btn-movment");
+const inputMove = document.getElementById("quntity");
+const inputtransferTo = document.getElementById("transfer-to");
 
 
 
