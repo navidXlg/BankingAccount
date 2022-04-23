@@ -1,3 +1,9 @@
+.enter-to-acccount {
+  background-color: aquamarine;
+  position: relative;
+  z-index: 200;
+}
+
 .up-design {
   position: absolute;
   z-index: -10;

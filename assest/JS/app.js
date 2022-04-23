@@ -78,12 +78,13 @@ const creatUserName = function(acc){
 creatUserName(acconts);
 
 
-const accBalance = function(movment){
-    const main = movment.reduce((init,mov)=> init+mov, 0)
+const accBalance = function(aacun){
+    const main = aacun.movment.reduce((init,mov)=> init+mov, 0);
+    aacun.balnce = main;
     balance.textContent = `${main} $`;
 };
 
-accBalance(account3.movment);
+accBalance(currentAccount);
 
 
 const calcDepositTotal = function(move){
@@ -104,21 +105,53 @@ const withdrwlTotal = function(move){
 
 withdrwlTotal(account3.movment); 
 
+const updateInterFace = function(acc){
+    showMovment(acc.movment);
+    accBalance(acc);
+
+}
+
 
 //LOGIN TO THE ACCOUNT
 let currentAccount ; 
 
 
-loginBtn.addEventListener("click",function(event){
+// loginBtn.addEventListener("click",function(event){
 
-    event.preventDefault();
-    currentAccount = acconts.find((item)=> item.owenr === inputLogin.value);
-    if(currentAccount.pin === Number(inputPass.value)){
-        /// what shoud we have done when user logged in
-        //remove the hover and display UI
+//     event.preventDefault();
+//     currentAccount = acconts.find((item)=> item.owenr === inputLogin.value);
+//     if(currentAccount.pin === Number(inputPass.value)){
+//         /// what shoud we have done when user logged in
+//         //remove the hover and display UI
         
-    }
+//     }
 
+// updateInterFace(currentAccount);
+// });
+
+
+
+//TRANSFER MONEY TO ANOTHER ACCOUNT
+
+
+btnMove.addEventListener("click",function(event){
+    event.preventDefault();
+
+    const megdar = Number(inputMove.value);
+    const currn = acconts.find((item)=> item.owenr === inputtransferTo.value);
+    //FOR CLEANING THE INPUT BOX AFTER IMPLEMENTING IT
+    inputMove.value = inputtransferTo.value = " ";
+
+    if(
+    megdar>0 &&
+    currn&&
+    megdar>=currentAccount.balance &&
+    currn?.owenr !== currentAccount.owenr)
+    {
+        currentAccount.movment.push(-megdar);
+        currn.movment.push(megdar);
+        updateInterFace(currentAccount);
+    }
 
 })
 
