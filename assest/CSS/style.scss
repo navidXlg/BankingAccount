@@ -1,20 +1,41 @@
 @import "enterstyle";
 
+$primary-color: #F6F5F5;
+$secondary-color: #D3E0EA;
+$tertiary-color: #1687A7;
+$extra-color : #276678;
 
 
-.up-design {
-    position: absolute;
-    z-index: -10;
-  }
-  * {
+  *,
+  *::after,
+  *::before {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
   }
+
+  
+    @font-face{
+      font-family: "font-farsi";
+      src : url("./B-Ziba/B\ Ziba_0.ttf");
+    }
+    @font-face {
+      font-family: "font-dov";
+      src: url("./font-d/Dirooz.eot"),
+           url("./font-d/Dirooz.ttf"),
+           url("./font-d/Dirooz.woff")
+    }
+
   body {
     background-color: #ffff;
+    font-size: 62.5%;
+    position: relative;
+    height: 100vh;
+    font-family: "font-dov";
   }
+
+
+
   
   .head {
     &-container {
@@ -98,3 +119,121 @@
     align-items: center;
     gap: 1rem;
   }
+
+
+
+/////////////////////////////////////
+  // LOGIN MODEL
+
+.login{
+  position: absolute;
+  font-size: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  background-color: $primary-color;
+  color: $extra-color;
+  width: 20rem;
+  height: 36rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+
+
+  .login__exit{
+    align-self: self-start;
+    margin-bottom: 1.5rem;
+    cursor:pointer;
+    .img{
+      width: 1.5rem;
+      height: 1.5rem;
+      color: $extra-color;
+    }
+  }
+
+  .login--logo{
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    opacity: .5;
+  }
+
+  .logo__svg{
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  .login--form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  input{
+    display: block;
+    font: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: .5rem;
+    width: 100%;
+    color: $tertiary-color;
+    border: 1px solid $tertiary-color;
+    border-radius: .2rem;
+    &:focus{
+      outline: none;
+    }
+  }
+
+  .login--form__btn{
+    background-color: $tertiary-color;
+    color: $primary-color;
+    font-weight: 900;
+ 
+  }
+
+  .login__submit{
+    font-size: 1.1rem;
+
+    span{
+      color: red;
+      font-weight: 600;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// Utility classes
+.btn {
+  font : inherit;
+  font-size: 1.5rem;
+  display: inline-block;
+  width: 100%;
+  padding: .1rem 0rem ;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: .2rem;
+}

@@ -1,9 +1,5 @@
 'use strict';
 
-//BANK ACCONTS
-//Becuse We want to show that we are pretending 
-//that we work with API we didnt use the MAP
-
 const account1 = {
     owenr : "navid khaleghi" ,
     movment : [],
@@ -69,7 +65,7 @@ const creatUserName = function(acc){
         item.user =item.owenr
         .toLowerCase()
         .split(" ")
-        .map((ite)=> ite[0])
+        .map((item)=> item[0])
         .join("");  
     })
 
