@@ -345,13 +345,47 @@ ul li {
   font-size: 0.6rem;
 }
 
+.main__hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.opration__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.accountHistory {
+  align-self: self-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+}
+.accountHistory .accountHistory--card {
+  background-color: #D3E0EA;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 1.1rem;
+  width: 28rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* OPERATIONS */
 .operation {
   border-radius: 1rem;
   padding: 3rem 4rem;
   font-size: 0.8rem;
   color: #F6F5F5;
-  width: 40rem;
+  width: 30rem;
 }
 .operation h2 {
   margin-bottom: 1.9rem;

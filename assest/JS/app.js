@@ -2,7 +2,8 @@
 
 const account1 = {
     owenr : "navid khaleghi" ,
-    movment : [],
+    movment : [500, 1000, 2000, 5000],
+    balance : 50000,
     interestRate : 1.2,
     pin:1111
 };
@@ -30,7 +31,7 @@ const balance = document.querySelector(".balnce");
 const loginBtn = document.querySelector(".login--form__btn");
 const loginInput = document.querySelector(".login-input");
 const loginPass = document.querySelector(".login-password");
-const btnMove = document.querySelector(".btn-movment");
+const btnMove = document.querySelector(".form__btn--transfer");
 const inputMove = document.getElementById("quntity");
 const inputtransferTo = document.getElementById("transfer-to");
 const loginModel = document.getElementById("login");
@@ -40,29 +41,11 @@ const inputLoginValue = document.querySelector(".login--form__username");
 const inputLoginPassword = document.querySelector(".login--form__password");
 const main = document.querySelector(".main");
 const loginForm = document.querySelector(".login--form");
+const accountHistory = document.querySelector(".accountHistory");
+const transferQuntite = document.querySelector(".form__input--amount");
+const transferAccount = document.getElementById("transferAccount");
 
 
-
-//CONTAINER OF MOVMENT
-
-// const showMovment = (movmetns)=>{
-
-//     movmetns.forEach((movment, indexOfmovment)=>{
-//         const typeOfmovment = movment>0 ? "واریز به حساب" : "برداشت از حساب" ;
-//         const displyHtml = `
-//         <div class="movment">
-//             <div class="movment-desc">
-//               <p class="typeOfMove">${typeOfmovment} ${indexOfmovment+1}</p>
-//               <p class="date">1400/3/24</p>
-//             </div>
-//             <p class="value-of-movment">${movment}</p>
-//           </div>
-//         `;
-
-//         displayMovments.insertAdjacentHTML("beforeend",displyHtml);
-//     })
-
-// };
 
 // showMovment(account3.movment);
 
@@ -107,66 +90,22 @@ const loginForm = document.querySelector(".login--form");
 
 // withdrwlTotal(account3.movment); 
 
-// //TRANSFER MONEY TO ANOTHER ACCOUNT
-// btnMove.addEventListener("click",function(event){
-//     event.preventDefault();
-
-//     const megdar = Number(inputMove.value);
-//     const currn = acconts.find((item)=> item.owenr === inputtransferTo.value);
-//     //FOR CLEANING THE INPUT BOX AFTER IMPLEMENTING IT
-//     inputMove.value = inputtransferTo.value = " ";
-
-//     if(
-//     megdar>0 &&
-//     currn&&
-//     megdar>=currentAccount.balance &&
-//     currn?.owenr !== currentAccount.owenr)
-//     {
-//         currentAccount.movment.push(-megdar);
-//         currn.movment.push(megdar);
-//         updateInterFace(currentAccount);
-//     }
-
-// })
+//TRANSFER MONEY TO ANOTHER ACCOUNT
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//////////////////////////// OVERALL LOGINING LOGIC ////////////////////////////////////////////
 let currentAccount ; 
 loginForm.addEventListener("submit",(event) => {
     event.preventDefault();
     currentAccount = acconts.find(item => item.owenr === inputLoginValue.value);
     if(currentAccount?.pin === Number(inputLoginPassword.value)){
-        updateInterFace(5);
+        loginModel.classList.add("hidden");
+        main.classList.add("show");
+        updateInterFace(currentAccount);
     }else{
         errorPassWrong(currentAccount);
     }
 });
-
 
 function errorPassWrong(user){
     const text = `<p>کاربر مورد نظر${user.owenr} رمز عبور شما صحیح نمی باشد <p>`;
@@ -174,11 +113,48 @@ function errorPassWrong(user){
 
 };
 
-
-
 function updateInterFace (acc){
-    loginModel.classList.add("hidden");
-    main.classList.add("show");
-    // showMovment(acc.movment);
-    // accBalance(acc);
+    showMovment(acc.movment);
 };
+
+// CONTAINER OF MOVMENT
+function showMovment (movmetns){
+    accountHistory.innerHTML = "";
+    console.log(movmetns)
+    movmetns.forEach((movment, indexOfmovment)=>{
+        const typeOfmovment = movment>0 ? "واریز به حساب" : "برداشت از حساب" ;
+        const displyHtml = `
+            <div class="accountHistory--card">
+              <P>مبلغ : ${movment}</P>
+              <p>زمان تراکنش</p>
+              <div>نوع عملیات: ${typeOfmovment}</div>
+            </div>`;
+
+        accountHistory.insertAdjacentHTML("afterbegin",displyHtml);
+    })
+
+};
+
+
+////////////////////////////// Movement logic adding //////////////////////////////////////////////////
+
+btnMove.addEventListener("click" , (event) => {
+    event.preventDefault();
+    const quntite = Number(transferQuntite.value);
+    const currn = acconts.find((item)=> item.owenr === transferAccount.value);
+    if(
+    quntite >0 &&
+    currn&&
+    quntite<=currentAccount.balance &&
+    currn?.owenr !== currentAccount.owenr
+    )
+    {
+        currentAccount.movment.push(-quntite);
+        currn.movment.push(quntite);
+        updateInterFace(currentAccount);
+
+    }else{
+        throw new Error("There is error here")
+    }
+    transferQuntite.value = transferAccount.value = " ";
+});

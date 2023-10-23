@@ -392,7 +392,47 @@ ul li {
   font-size: .6rem;
 }
 
+.main__hero{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
 
+.opration__list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+
+
+
+//// Acccount history section 
+
+.accountHistory {
+  align-self: self-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+
+  .accountHistory--card{
+    background-color: $secondary-color;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    font-size: 1.1rem;
+    width:28rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+}
 
 /* OPERATIONS */
 .operation {
@@ -400,7 +440,7 @@ ul li {
   padding: 3rem 4rem;
   font-size: .8rem;
   color: $primary-color;
-  width: 40rem;
+  width: 30rem;
 
   h2{
     margin-bottom: 1.9rem;

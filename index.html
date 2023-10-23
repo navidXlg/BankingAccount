@@ -163,14 +163,16 @@
     </div>
     </div>
 
+    <div class="main__hero">
+      <div class="opration__list">
     <!-- Banking account oprations transfer -->
     <div class="operation operation--transfer">
       <h2>انتقال به حساب دیگر</h2>
       <form class="form form--transfer">
         <label class="form__label">شماره حساب مقصد</label>
-        <input type="text" class="form__input form__input--to" />
+        <input type="text" id="transferAccount" class="form__input form__input--to" />
         <label class="form__label">مقدار</label>
-        <input type="number" class="form__input form__input--amount" />
+        <input type="number" id="transfer" class="form__input form__input--amount" />
         <button class="form__btn form__btn--transfer">&rarr;</button>
       </form>
     </div>
@@ -196,10 +198,13 @@
         <button class="form__btn form__btn--transfer">&rarr;</button>
       </form>
     </div>
+  </div>
 
+    <!-- The account history -->
+    <section class="accountHistory">
+    </section>
+  </div>
   </main>
-
-
 
     <!-- Model login  -->
     <div class="login" id="login">
@@ -235,8 +240,6 @@
         <p class="login__submit">عضو نیستبد؟ <span>ثبت نام </span></p>
       </form>
     </div>
-
-
 
     <!-- FONT AWSOM CDN -->
     <script src="https://use.fontawesome.com/483144496a.js"></script>
