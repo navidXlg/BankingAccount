@@ -32,6 +32,7 @@ $extra-color : #276678;
     position: relative;
     height: 100vh;
     font-family: "font-dov";
+    
   }
 
   main {
@@ -40,6 +41,7 @@ $extra-color : #276678;
     gap: 3rem;
     align-items: center;
     justify-content: center;
+    opacity: 20%;
   }
 
 
@@ -149,7 +151,7 @@ $extra-color : #276678;
   display: flex;
   flex-direction: column;
   align-items: center;
-  display: none;
+  // display: none;
 
 
   .login__exit{
@@ -258,12 +260,28 @@ $extra-color : #276678;
   padding: 20px 40px;
   box-sizing: border-box;
   color: #fff;
+
+  p {
+    margin: 0;
+    font-size: 3rem;
+  }
 }
 
-p {
-  margin: 0;
-  font-size: 3rem;
+.error{
+  color: red;
 }
+
+
+.hidden{
+  display: none;
+}
+
+.show {
+  opacity: 100%;
+}
+
+
+
 
 /* Controls top right logo */
 
